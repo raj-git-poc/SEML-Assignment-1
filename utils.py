@@ -11,7 +11,7 @@ import joblib
 import pandas as pd
 
 def load_model():
-    return joblib.load("/content/sample_data/model.pkl")
+    return joblib.load("/sample_data/model.pkl")
 
 def predict_heart_disease(data):
     model = load_model()
