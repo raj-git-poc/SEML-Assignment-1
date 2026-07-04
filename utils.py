@@ -8,10 +8,12 @@ Original file is located at
 """
 
 import joblib
-import pandas as pd
+from pathlib import Path
+
+MODEL_PATH = Path(__file__).parent / "sample_data" / "model.pkl"
 
 def load_model():
-    return joblib.load("/sample_data/model.pkl")
+    return joblib.load(MODEL_PATH)
 
 def predict_heart_disease(data):
     model = load_model()
