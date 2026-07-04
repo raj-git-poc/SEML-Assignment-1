@@ -10,6 +10,7 @@ Original file is located at
 import joblib
 from pathlib import Path
 from sklearn.metrics import accuracy_score, recall_score
+import time
 
 MODEL_PATH = Path(__file__).parent / "sample_data" / "model.pkl"
 
@@ -18,10 +19,13 @@ def load_model():
 
 def predict_heart_disease(data):
     model = load_model()
+    start = time.time()
     prediction = model.predict(data)
+    end = time.time()
     accuracy = accuracy_score(y_test, pred)
     recall = recall_score(y_test, pred)
-
+    
     print("Accuracy:", accuracy)
     print("Recall:", recall)
+    print("Prediction Time:", (end - start) * 1000, "ms")
     return prediction[0]
