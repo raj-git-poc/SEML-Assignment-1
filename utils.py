@@ -9,6 +9,7 @@ Original file is located at
 
 import joblib
 from pathlib import Path
+from sklearn.metrics import accuracy_score, recall_score
 
 MODEL_PATH = Path(__file__).parent / "sample_data" / "model.pkl"
 
@@ -18,4 +19,9 @@ def load_model():
 def predict_heart_disease(data):
     model = load_model()
     prediction = model.predict(data)
+    accuracy = accuracy_score(y_test, pred)
+    recall = recall_score(y_test, pred)
+
+    print("Accuracy:", accuracy)
+    print("Recall:", recall)
     return prediction[0]
